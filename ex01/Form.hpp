@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <string>
+#include "Bureaucrat.hpp"
 
 class Form
 {
@@ -12,13 +13,13 @@ class Form
         const int grade_exec;
 
     public:
-        Form(const std::string name);
+        Form(const std::string name, int gradeexec, int gradesign);
         ~Form();
         std::string getName();
         int getGradesign();
         int getGradexec();
-        bool getsigned();
-
+        bool getSigned();
+        void beSigned(Bureaucrat &bur);
         class GradeTooHighException : public std::exception
         {
             public :

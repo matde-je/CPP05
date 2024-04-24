@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 //Since name is declared as a const std::string, it must be initialized in the member initializer list of the constructor 
 //rather than assigning it inside the constructor body.
@@ -94,4 +94,11 @@ const char * Bureaucrat::GradeTooHighException::type() const throw()
 const char * Bureaucrat::GradeTooLowException::type() const throw()
 {
     return ("Bureaucrat grade is too low");
+}
+void Bureaucrat::signForm(Form &fo)
+{
+    if (fo.getSigned() == true)
+        std::cout << this->name <<  " signed " << fo.getName() << std::endl;
+    else
+        std::cout << this->name << " couldn’t sign " << fo.getName() << " because of a reason.\n";
 }

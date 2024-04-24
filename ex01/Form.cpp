@@ -1,8 +1,23 @@
 #include "Form.hpp"
 
-Form::Form(const std::string name): name(name), grade_exec(0), grade_sign(0)
+Form::Form(const std::string name, int gradesign, int gradeexec): name(name), grade_sign(gradesign), grade_exec(gradeexec)
 {
     _signed = false;
+    try
+    {
+        if (gradeexec < 1 || gradesign < 1)
+            throw GradeTooHighException();
+        else if (gradeexec > 150 || gradesign > 150)
+            throw GradeTooLowException();
+    }
+    catch (Form::GradeTooHighException &e)
+    {
+        std::cout << e.type() << std::endl;
+    }
+    catch (Form::GradeTooLowException &e)
+    {
+        std::cout << e.type() << std::endl;
+    }
 }
 
 Form::~Form(void)
@@ -12,7 +27,7 @@ Form::~Form(void)
 
 std::ostream &operator<<(std::ostream &os, Form &fo)
 {
-    os << fo.getName() << ", form grade exec " << fo.getGradexec() << ", form grade sign " << fo.getGradesign() << ", form sign " << fo.getsigned() << ".";
+    os << fo.getName() << ", form grade exec " << fo.getGradexec() << ", form grade sign " << fo.getGradesign() << ", form sign " << fo.getSigned() << ".";
     return os;
 }
 
@@ -31,7 +46,32 @@ int Form::getGradesign()
     return (grade_sign);
 }
 
-bool Form::getsigned()
+bool Form::getSigned()
 {
     return (_signed);
+}
+
+void Form::beSigned(Bureaucrat &bur)
+{
+    try
+    {
+        if (bur.getGrade() > grade_sign)
+            throw GradeTooLowException();
+        else
+            _signed = true;
+    }
+    catch (Bureaucrat::GradeTooLowException &e)
+    {
+        std::cout << e.type() << std::endl;
+    }
+}
+
+const char * Form::GradeTooHighException::type() const throw()
+{
+    return ("Form grade is too high");
+}
+
+const char * Form::GradeTooLowException::type() const throw()
+{
+    return ("Form grade is too low");
 }
