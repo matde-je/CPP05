@@ -1,25 +1,29 @@
-#ifndef Form_HPP
+#ifndef AFORM_HPP
 
 #include <iostream>
 #include <string>
 #include "Bureaucrat.hpp"
 
-class Form
+
+//if a member function is not declared as const, 
+//it cannot be called on a const object. 
+class AForm
 {
-    private:
+    protected:
         const std::string name;
         bool _signed;
         const int grade_sign;
         const int grade_exec;
 
     public:
-        Form(const std::string name, int gradeexec, int gradesign);
-        ~Form();
+        AForm(const std::string name, int gradeexec, int gradesign);
+        ~AForm();
         std::string getName();
         int getGradesign();
         int getGradexec();
         bool getSigned();
-        void beSigned(Bureaucrat &bur);
+        void beSigned(Bureaucrat const &bur);
+        virtual void execute(Bureaucrat const & executor) const = 0;
         class GradeTooHighException : public std::exception
         {
             public :
@@ -33,6 +37,6 @@ class Form
 
 } ;
 
-std::ostream &operator<<(std::ostream &os, Form &fo);
+std::ostream &operator<<(std::ostream &os, AForm &fo);
 
 #endif

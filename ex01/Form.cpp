@@ -27,7 +27,7 @@ Form::~Form(void)
 
 std::ostream &operator<<(std::ostream &os, Form &fo)
 {
-    os << fo.getName() << ", form grade exec " << fo.getGradexec() << ", form grade sign " << fo.getGradesign() << ", form sign " << fo.getSigned() << ".";
+    os << fo.getName() << ", Form grade exec " << fo.getGradexec() << ", Form grade sign " << fo.getGradesign() << ", Form sign " << fo.getSigned() << ".";
     return os;
 }
 

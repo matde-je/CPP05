@@ -2,10 +2,7 @@
 
 int main()
 {
-    // Form fo("bela", 151);
-    // Form fo1("beli", 150);
-    // Form fo2("bele", 1);
-    // Form fo3("belo", 0);
+
     Form* fo = new Form("bela", 150, 2);
     Form* fo2 = new Form("bele", 1, 150);
 
@@ -23,7 +20,8 @@ int main()
     fo2->beSigned(*bur2);
     std::cout << fo2->getSigned() << std::endl;
 
-    bur2->signForm(*fo2);
+    Form* fo5 = new Form("bela", 2, 150);
+    bur2->signForm(*fo5);
 
     std::cout << std::endl;
 
@@ -32,5 +30,6 @@ int main()
     delete fo2;
     delete fo3;
     delete fo4;
+    delete fo5;
     delete bur2;
 }
