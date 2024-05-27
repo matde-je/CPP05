@@ -1,11 +1,16 @@
 
 #ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 #include <iostream>
 #include <string>
 
 class Form ;
 
+//The function is not allowed to modify any non-static 
+//data members of the class it belongs to.
+//The function can be called on both const and non-const
+// instances of the class.
 class Bureaucrat
 {
     private:
@@ -19,10 +24,11 @@ class Bureaucrat
 		Bureaucrat	&operator=(const Bureaucrat &copy);
 
         std::string getName();
-        int getGrade();
+        int getGrade() const;
         void increment(void);
         void decrement(void);
         void signForm(Form &f1);
+        void executeForm(Form const & form);
         class GradeTooHighException : public std::exception
         {
             public :
@@ -33,7 +39,7 @@ class Bureaucrat
             public :
                 const char* type() const throw();
         };
-
+    
 } ;
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat &bur);

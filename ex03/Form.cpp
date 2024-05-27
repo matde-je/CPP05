@@ -45,7 +45,7 @@ std::ostream &operator<<(std::ostream &os, Form &fo)
     return os;
 }
 
-std::string Form::getName()
+std::string Form::getName() const
 {
     return (this->name);
 }
@@ -65,7 +65,7 @@ bool Form::getSigned()
     return (_signed);
 }
 
-void Form::beSigned(Bureaucrat &bur)
+void Form::beSigned(Bureaucrat const &bur)
 {
     try
     {

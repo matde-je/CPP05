@@ -4,12 +4,9 @@
 
 #include <iostream>
 #include <fstream>
-#include "AForm.hpp"
+#include "Form.hpp"
 
-
-//If the base class already implements the orthodox canonical 
-//class form, the derived class will automatically inherit these members.
-class ShrubberyCreationForm : public AForm
+class ShrubberyCreationForm : public Form
 {
     private:
         std::string target;

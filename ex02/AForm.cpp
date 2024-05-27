@@ -25,13 +25,27 @@ AForm::~AForm(void)
     return ;
 }
 
+AForm::AForm(const AForm &copy) : name(copy.name), grade_sign(copy.grade_sign), grade_exec(copy.grade_exec)
+{
+	*this = copy;
+}
+
+AForm & AForm::operator =(AForm const & src)
+{
+    if (this != &src)
+    {
+        _signed = src._signed;
+    }
+    return (*this);
+}
+
 std::ostream &operator<<(std::ostream &os, AForm &fo)
 {
     os << fo.getName() << ", AForm grade exec " << fo.getGradexec() << ", AForm grade sign " << fo.getGradesign() << ", AForm sign " << fo.getSigned() << ".";
     return os;
 }
 
-std::string AForm::getName()
+std::string AForm::getName() const
 {
     return (this->name);
 }

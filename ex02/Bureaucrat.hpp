@@ -1,5 +1,6 @@
 
 #ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 
 #include <iostream>
 #include <string>
@@ -19,6 +20,9 @@ class Bureaucrat
     public:
         Bureaucrat(const std::string name, int grade);
         ~Bureaucrat();
+        Bureaucrat(const Bureaucrat &copy);
+		Bureaucrat	&operator=(const Bureaucrat &copy);
+
         std::string getName();
         int getGrade() const;
         void increment(void);
@@ -35,7 +39,7 @@ class Bureaucrat
             public :
                 const char* type() const throw();
         };
-
+    
 } ;
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat &bur);

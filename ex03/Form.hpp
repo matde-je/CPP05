@@ -1,5 +1,5 @@
-#ifndef AFORM_HPP
-#define AFORM_HPP
+#ifndef Form_HPP
+#define Form_HPP
 
 #include <iostream>
 #include <string>
@@ -8,7 +8,7 @@
 
 //if a member function is not declared as const, 
 //it cannot be called on a const object. 
-class AForm
+class Form
 {
     protected:
         const std::string name;
@@ -17,10 +17,10 @@ class AForm
         const int grade_exec;
 
     public:
-        AForm(const std::string name, int gradeexec, int gradesign);
-        virtual ~AForm();
-        AForm(AForm const & copy);
-        AForm & operator =(AForm const & src);
+        Form(const std::string name, int gradeexec, int gradesign);
+        virtual ~Form();
+        Form(Form const & copy);
+        Form & operator =(Form const & src);
         
         std::string getName() const;
         int getGradesign();
@@ -41,6 +41,6 @@ class AForm
 
 } ;
 
-std::ostream &operator<<(std::ostream &os, AForm &fo);
+std::ostream &operator<<(std::ostream &os, Form &fo);
 
 #endif

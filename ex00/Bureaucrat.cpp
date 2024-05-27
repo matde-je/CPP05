@@ -28,6 +28,20 @@ Bureaucrat::~Bureaucrat(void)
     return ;
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+{
+	*this = copy;
+}
+
+Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &copy)
+{
+	if (this != &copy)
+	{
+		grade = copy.grade;
+	}
+	return (*this);
+}
+
 std::string Bureaucrat::getName()
 {
     return (this->name);

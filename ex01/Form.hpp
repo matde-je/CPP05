@@ -15,6 +15,9 @@ class Form
     public:
         Form(const std::string name, int gradeexec, int gradesign);
         ~Form();
+        Form(Form const & copy);
+        Form & operator =(Form const & src);
+        
         std::string getName();
         int getGradesign();
         int getGradexec();
