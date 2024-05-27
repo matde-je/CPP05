@@ -2,7 +2,7 @@
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): Form("Robot", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(std::string target): Form("President", 25, 5)
 {
     this->target = target;
 }

@@ -33,6 +33,7 @@ int main()
     Form* rrf;
     rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
     bur2->executeForm(*rrf);
+
     delete rrf;
     delete bur2;
 }

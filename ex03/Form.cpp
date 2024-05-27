@@ -27,6 +27,7 @@ Form::~Form(void)
 
 Form::Form(const Form &copy) : name(copy.name), grade_sign(copy.grade_sign), grade_exec(copy.grade_exec)
 {
+    std::cout << "copy called\n";
 	*this = copy;
 }
 
