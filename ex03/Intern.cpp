@@ -1,18 +1,21 @@
-
 #include "Intern.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-Intern::Intern()
-{
-    return ;
-}
+Intern::Intern(){}
 
-Intern::~Intern()
-{
-    return ;
-}
+Intern::Intern( const Intern & src ){
+    (void)src;}
+
+Intern::~Intern(){}
+
+Intern &				Intern::operator=( Intern const & ){
+	return *this;}
+
+
+
+
 Form * makePresident(std::string target)
 {
     return (new PresidentialPardonForm(target));

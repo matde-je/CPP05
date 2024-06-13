@@ -12,18 +12,23 @@ PresidentialPardonForm::~PresidentialPardonForm()
     return ;
 }
 
-void PresidentialPardonForm::execute(Bureaucrat const & executor) const
+int PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-    (void) executor;
     try
     {
         if (_signed != true)
             throw 505;
+        if (executor.getGrade() > grade_exec)
+            throw 404;
         std::cout << this->target << " has been pardoned by Zaphod Beeblebrox.\n";
     }
-    catch(...)
+    catch(int mynum)
     {
-        std::cerr << "AForm is not signed" << '\n';
+        if (mynum == 505)
+            std::cerr << "AForm is not signed" << '\n';
+        if (mynum == 404)
+            std::cerr << "Grade not high enough" << '\n';
+        return (1);
     }
-
+    return 0;
 }

@@ -13,13 +13,14 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 //catch what is thrown
 //execute the form’s action of the concrete class
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+int ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-    (void) executor;
     try
     {
         if (_signed != true)
             throw 505;
+        if (executor.getGrade() > grade_exec)
+            throw 404;
         else
         {
             std::ofstream MyFile((target + "_shrubbery").c_str());
@@ -36,10 +37,14 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
             MyFile.close();
         }
     }
-    catch(...)
+    catch(int mynum)
     {
-        std::cerr << "Form is not signed" << '\n';
+        if (mynum == 505)
+            std::cerr << "AForm is not signed" << '\n';
+        if (mynum == 404)
+            std::cerr << "Grade not high enough" << '\n';
+        return 1;
     }
-    
+    return 0;
 }
 

@@ -11,19 +11,24 @@ RobotomyRequestForm::~RobotomyRequestForm()
     return ;
 }
 
-void RobotomyRequestForm::execute(Bureaucrat const & executor) const
+int RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-    (void) executor;
     std::cout << "Drilling noises\n";
     try
     {
         if (_signed != true)
             throw 505;
+        if (executor.getGrade() > grade_exec)
+            throw 404;
         std::cout << this->target << " has been robotomized successfully 50% of the time\n";
     }
-    catch(...)
+    catch(int mynum)
     {
-        std::cerr << "Form is not signed" << '\n';
+        if (mynum == 505)
+            std::cerr << "AForm is not signed" << '\n';
+        if (mynum == 404)
+            std::cerr << "Grade not high enough" << '\n';
+        return 1;
     }
-
+    return 0;
 }

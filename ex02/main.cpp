@@ -5,25 +5,24 @@
 
 int main()
 {
-    Bureaucrat* bur2 = new Bureaucrat("bele", 5);
+    Bureaucrat* bur2 = new Bureaucrat("bele", 1);
 
     ShrubberyCreationForm shru("shru");
     bur2->signForm(shru);
-
     shru.execute(*bur2);
     bur2->executeForm(shru);
 
+    std::cout << std::endl;
     RobotomyRequestForm rot("rot");
 
     bur2->signForm(rot);
-
     rot.execute(*bur2);
     bur2->executeForm(rot);
 
+    std::cout << std::endl;
     PresidentialPardonForm pres("pres");
 
     bur2->signForm(pres);
-
     pres.execute(*bur2);
     bur2->executeForm(pres);
 

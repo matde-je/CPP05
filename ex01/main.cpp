@@ -23,7 +23,6 @@ int main()
     Form* fo5 = new Form("bela", 2, 150);
     bur2->signForm(*fo5);
 
-    std::cout << std::endl;
 
     delete fo;
     delete fo1;
